@@ -66,7 +66,9 @@ test("header calls to action navigate to meaningful mobile content", async ({ pa
 
   await detailsLink.click();
   await expect(page).toHaveURL(/#overview$/);
-  await expect(page.locator("#overview")).toBeFocused();
+  const overview = page.locator("#overview");
+  await expect(overview).toBeFocused();
+  expect(await overview.evaluate((element) => getComputedStyle(element).outlineStyle)).toBe("none");
 
   await page.goto("/");
   const inquiryLink = page.getByRole("link", { name: "Inquire" });

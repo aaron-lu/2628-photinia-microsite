@@ -46,6 +46,8 @@ npx playwright install chromium webkit
 npm run e2e
 ```
 
+Automated checks are necessary but not sufficient for mobile sign-off. At minimum, review a 390px phone and an 810px touch tablet after tapping every header and in-page jump control. Capture and inspect the destination and the following section boundary in the focused, scrolled state; this catches visual defects from outlines and decorative layers that static overlap checks cannot see.
+
 Before production, submit a marked test inquiry and verify the durable record in Vercel Blob. A success message alone is not delivery evidence.
 
 `ci/site.yml.example` contains the recommended GitHub Actions gate. Copy it to `.github/workflows/ci.yml` after the repository credential has workflow permission.
