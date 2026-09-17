@@ -1,20 +1,26 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { getBrandedPage } from "@/lib/listing";
+import { SITE_URL } from "@/lib/site-url";
 import "./globals.css";
 
+const page = getBrandedPage();
+
 export const metadata: Metadata = {
-  title: "2628 Photinia Court | Pleasanton Home",
-  description:
-    "Explore 2628 Photinia Court, a four-bedroom Pleasanton home with double-height living spaces, a garden patio, and community amenities.",
-  icons: {
-    icon: "/favicon.svg",
-  },
+  metadataBase: new URL(SITE_URL),
+  title: page.metadata.title,
+  description: page.metadata.description,
+  applicationName: page.property.identity.street,
+  formatDetection: { email: false, address: false, telephone: false },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: page.brand.colors.ink,
+  colorScheme: "light",
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>{children}</body>

@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "factoryVersion": "0.1.0",
+  "id": "2628-photinia",
+  "identity": {
+    "street": "2628 Photinia Court",
+    "locality": "Pleasanton",
+    "region": "CA",
+    "postalCode": "94588",
+    "status": "Active",
+    "mls": "Bay East MLS #41147570",
+    "verifiedOn": "September 17, 2026"
+  },
+  "price": "$1,698,000",
+  "facts": [
+    {
+      "id": "bedrooms",
+      "label": "Bedrooms",
+      "value": "4"
+    },
+    {
+      "id": "bathrooms",
+      "label": "Bathrooms",
+      "value": "2.5"
+    },
+    {
+      "id": "interior",
+      "label": "Interior",
+      "value": "2,192 SF"
+    },
+    {
+      "id": "lot",
+      "label": "Lot",
+      "value": "3,898 SF"
+    },
+    {
+      "id": "garage",
+      "label": "Garage",
+      "value": "2-car"
+    },
+    {
+      "id": "year-built",
+      "label": "Year built",
+      "value": "1999"
+    },
+    {
+      "id": "hoa-dues",
+      "label": "HOA dues",
+      "value": "$230/mo"
+    }
+  ],
+  "headline": "Light rises through the center of the home.",
+  "introduction": "Double-height living spaces, an open stair, and a dual-sided fireplace give the interior its sense of connection. Beyond the glass, a courtyard, pergola patio, and green side yard create a sequence of outdoor rooms.",
+  "sections": [
+    {
+      "title": "A room that reaches upward",
+      "body": [
+        "Tall windows, vaulted volume, and the open stair make the living room the spatial center of the house. Built-in cabinetry and the dual-sided fireplace carry that connection into the adjacent family room."
+      ],
+      "photoId": "upper-overlook"
+    },
+    {
+      "title": "Kitchen, dining, and patio in one easy sequence",
+      "body": [
+        "The center-island kitchen opens toward everyday dining and glass doors to the patio, keeping cooking, conversation, and outdoor access within one connected part of the plan."
+      ],
+      "photoId": "kitchen-wide"
+    },
+    {
+      "title": "Outdoor rooms with shade and greenery",
+      "body": [
+        "A sheltered courtyard, a pergola-framed rear patio, and a green side yard form distinct settings for a quiet morning, an open-air meal, or time in the garden."
+      ],
+      "photoId": "pergola-patio"
+    }
+  ],
+  "neighborhood": {
+    "title": "Parks, practical stops, and regional rail",
+    "introduction": "Stoneridge Place offers shared amenities and a convenient Pleasanton setting near neighborhood parks, everyday shopping, regional trails, and BART. Distances and availability should be independently verified.",
+    "highlights": [
+      {
+        "title": "Amaral Park",
+        "body": "A mapped walking route is approximately half a mile. City materials identify playgrounds, picnic areas, ball backstops, and basketball courts.",
+        "url": "https://www.cityofpleasantonca.gov/your-community/parks-trails/",
+        "mlsAllowed": false
+      },
+      {
+        "title": "Pacific Pearl",
+        "body": "Approximately 0.8 driving mile by a mapped route, with a current mix of grocery, dining, and everyday services.",
+        "url": "https://shoppacificpearl.com/",
+        "mlsAllowed": false
+      },
+      {
+        "title": "Dublin / Pleasanton BART",
+        "body": "Approximately 3.1 driving miles by a mapped route, with local and regional transit connections.",
+        "url": "https://www.bart.gov/stations/dubl",
+        "mlsAllowed": false
+      }
+    ]
+  },
+  "media": {
+    "heroId": "living-room-hero",
+    "galleryIds": [
+      "front-exterior",
+      "front-entry",
+      "living-room-wide",
+      "dining-room",
+      "kitchen-wide",
+      "family-room",
+      "kitchen-island",
+      "kitchen-flow",
+      "upper-overlook",
+      "upper-landing",
+      "primary-bedroom",
+      "primary-bath",
+      "outlook",
+      "secondary-bedroom-one",
+      "secondary-bedroom-two",
+      "hall-bath",
+      "backyard-patio",
+      "rear-exterior",
+      "pergola-patio",
+      "side-yard",
+      "court-context",
+      "living-room-hero"
+    ],
+    "photos": [
+      {
+        "id": "front-exterior",
+        "src": "/property/front-exterior.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Sunlit front facade with red shutters, covered porch, and garage doors",
+        "caption": "Front exterior",
+        "desktopFocus": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "front-entry",
+        "src": "/property/front-entry.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Covered front porch with stone-trimmed columns and red entry door",
+        "caption": "Front entry",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "living-room-wide",
+        "src": "/property/living-room-wide.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Wide living room view with seating, staircase, and tall windows",
+        "caption": "Double-height living room",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "dining-room",
+        "src": "/property/dining-room.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Dining area set between shuttered windows and a glass door to the patio",
+        "caption": "Dining area",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "kitchen-wide",
+        "src": "/property/kitchen-wide.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Wide kitchen with white cabinetry, center island, recessed lights, and a sliding door to the patio",
+        "caption": "Kitchen",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "family-room",
+        "src": "/property/family-room.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Second sitting room with shuttered windows, light wood flooring, and a doorway to the hall",
+        "caption": "Family room",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "kitchen-island",
+        "src": "/property/kitchen-island.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Angled kitchen view with center island and openings toward the dining and living areas",
+        "caption": "Kitchen island",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "kitchen-flow",
+        "src": "/property/kitchen-flow.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Kitchen island in the foreground with the sink, cooktop, and dining area beyond",
+        "caption": "Kitchen flow",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "upper-overlook",
+        "src": "/property/upper-overlook.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "View from the upper landing down into the double-height living room and dining area",
+        "caption": "Upper overlook",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "upper-landing",
+        "src": "/property/upper-landing.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Upper landing with white railings overlooking the level below",
+        "caption": "Upper landing",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "primary-bedroom",
+        "src": "/property/primary-bedroom.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Staged primary bedroom with ceiling fan and a doorway to the attached bathroom",
+        "caption": "Primary bedroom",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "primary-bath",
+        "src": "/property/primary-bath.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Wide primary bathroom with double vanity, glass shower, soaking tub, and several windows",
+        "caption": "Primary bathroom",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "outlook",
+        "src": "/property/outlook.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Elevated view over nearby rooftops and a fenced open area toward distant hills and water",
+        "caption": "Outlook from the upper level",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "secondary-bedroom-one",
+        "src": "/property/secondary-bedroom-one.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Bright secondary bedroom staged with a single bed, playful dinosaur decor, and a ceiling fan",
+        "caption": "Secondary bedroom",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "secondary-bedroom-two",
+        "src": "/property/secondary-bedroom-two.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Secondary bedroom staged with a double bed, ceiling fan, and windows on two walls",
+        "caption": "Secondary bedroom",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "hall-bath",
+        "src": "/property/hall-bath.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Bathroom with glass shower, toilet, and white vanity",
+        "caption": "Bathroom",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "backyard-patio",
+        "src": "/property/backyard-patio.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Wide backyard patio with lounge seating, mature trees, and a wood fence",
+        "caption": "Backyard patio",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "rear-exterior",
+        "src": "/property/rear-exterior.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Rear elevation with patio seating, glass doors, and a narrow lawn area",
+        "caption": "Rear exterior",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "pergola-patio",
+        "src": "/property/pergola-patio.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Vine-covered pergola framing the patio and sliding doors, with seating beyond",
+        "caption": "Pergola patio",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "side-yard",
+        "src": "/property/side-yard.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Narrow green lawn bordered by shrubs, flowering trees, a wood fence, and the home",
+        "caption": "Side yard",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "court-context",
+        "src": "/property/court-context.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Paved residential court leading to the two-story stucco home and neighboring facades",
+        "caption": "Photinia Court",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      },
+      {
+        "id": "living-room-hero",
+        "src": "/property/living-room-hero.jpg",
+        "width": 2048,
+        "height": 1365,
+        "alt": "Bright double-height living room with fireplace, tall windows, open staircase, and dining area beyond",
+        "caption": "Living room",
+        "mobile": {
+          "kind": "full-frame"
+        }
+      }
+    ]
+  },
+  "brand": {
+    "brokerageName": "Compass",
+    "wordmark": "COMPASS",
+    "agents": [
+      {
+        "name": "Shug Sidhu",
+        "role": "Listing Agent",
+        "brokerage": "Compass",
+        "license": "DRE #02031219",
+        "phone": "(510) 856-6450",
+        "email": "shug.sidhu@compass.com",
+        "initials": "SS"
+      },
+      {
+        "name": "Andre Wang",
+        "role": "Co-listing Agent",
+        "brokerage": "Compass",
+        "license": "DRE #02073067",
+        "phone": "(510) 386-0028",
+        "email": "andre.wang@compass.com",
+        "initials": "AW"
+      }
+    ],
+    "colors": {
+      "paper": "#f5f1e9",
+      "ink": "#192b33",
+      "accent": "#94402f",
+      "soft": "#d8c8b7"
+    }
+  },
+  "inquiry": {
+    "heading": "Arrange a closer look at Photinia Court",
+    "introduction": "Schedule a private showing or ask the listing team a question about the property.",
+    "defaultMessage": "I’m interested in learning more about 2628 Photinia Court.",
+    "consentText": "I agree that the listing team may contact me about this property.",
+    "privacyUrl": "https://www.compass.com/legal/privacy-policy/"
+  },
+  "disclosures": {
+    "branded": "Floor Plans: All square footage is approximate. Floor plans, dimensions, and square footage are for marketing purposes only. Schools: Interested parties should independently verify school district availability; school attendance is not guaranteed. Information Accuracy: The listing team has not independently investigated or verified every statement on this website. Buyers are responsible for verifying all information they deem important.",
+    "mls": "Floor Plans: All square footage is approximate. Floor plans, dimensions, and square footage are for marketing purposes only. Schools: Interested parties should independently verify school district availability; school attendance is not guaranteed. Information Accuracy: The listing team has not independently investigated or verified every statement on this website. Buyers are responsible for verifying all information they deem important."
+  },
+  "seo": {
+    "siteUrl": "https://2628-photinia-microsite.vercel.app",
+    "brandedTitle": "2628 Photinia Court, Pleasanton | 4-Bedroom Home",
+    "brandedDescription": "Tour 2628 Photinia Court in Pleasanton’s Stoneridge Place: 4 bedrooms, 2.5 bathrooms, 2,192 square feet, garden patios, and a 2-car garage.",
+    "mlsTitle": "2628 Photinia Court, Pleasanton, CA 94588",
+    "mlsDescription": "Property details and photography for 2628 Photinia Court, a four-bedroom home in Pleasanton, California."
+  }
+}
