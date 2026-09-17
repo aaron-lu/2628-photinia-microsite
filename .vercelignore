@@ -1,0 +1,7 @@
+work
+outputs
+.wrangler
+.playwright-cli
+dist
+static-build
+node_modules
