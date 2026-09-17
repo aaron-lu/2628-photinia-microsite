@@ -169,6 +169,8 @@ img { display: block; max-width: 100%; }
 @media (max-width: 840px) {
   .site-header { grid-template-columns: 1fr auto; padding-top: 18px; }
   .site-header nav { display: none; }
+  .wordmark { min-height: 44px; }
+  .header-cta, .mls-mark { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; }
   .hero { min-height: 0; background: var(--ink); }
   .hero-media { position: relative; inset: auto; width: 100%; aspect-ratio: var(--photo-ratio); }
   .hero-media img { object-fit: contain; background: var(--ink); }
@@ -197,7 +199,7 @@ img { display: block; max-width: 100%; }
 @media (max-width: 560px) {
   .site-header { padding-inline: 18px; }
   .wordmark { font-size: 11px; }
-  .header-cta, .mls-mark { padding: 9px 12px; border: 1px solid rgba(255,255,255,.55); border-radius: 100px; font-size: 10px; }
+  .header-cta, .mls-mark { padding: 9px 14px; border: 1px solid rgba(255,255,255,.55); border-radius: 100px; font-size: 10px; }
   .hero-copy { padding-inline: 18px; }
   .hero-copy h1 { font-size: 15vw; }
   .section-label { align-items: flex-start; flex-direction: column; gap: 15px; }

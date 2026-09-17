@@ -33,7 +33,7 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
 
   return (
     <div className="site-root" data-audience={page.kind} style={themeStyle}>
-      <a className="skip-link" href="#main">Skip to property details</a>
+      <a className="skip-link" href="#overview">Skip to property overview</a>
       <header className="site-header">
         <a className="wordmark" href="#top">
           <span>{property.identity.street.split(" ")[0]}</span>
@@ -45,7 +45,7 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
           <a href="#gallery">Gallery</a>
           <a href="#neighborhood">Neighborhood</a>
         </nav>
-        {page.kind === "branded" ? <a className="header-cta" href="#contact">Inquire</a> : <span className="mls-mark">Property details</span>}
+        {page.kind === "branded" ? <a className="header-cta" href="#contact">Inquire</a> : <a className="mls-mark" href="#overview">Property details</a>}
       </header>
 
       <main id="main">
@@ -71,7 +71,7 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
           </div>
         </section>
 
-        <section className="intro" id="overview">
+        <section className="intro" id="overview" tabIndex={-1}>
           <div className="section-label">
             <span>Property overview</span>
             <span className="status-pill">{property.identity.status} · {property.identity.mls}</span>

@@ -54,6 +54,27 @@ test("MLS route excludes contact capture and branding", async ({ page }) => {
   await expect(page.locator(".brokerage-mark")).toHaveCount(0);
 });
 
+test("header calls to action navigate to meaningful mobile content", async ({ page }) => {
+  await page.goto("/mls");
+  const detailsLink = page.getByRole("link", { name: "Property details" });
+  await expect(detailsLink).toHaveAttribute("href", "#overview");
+
+  if ((page.viewportSize()?.width ?? 0) <= 840) {
+    const box = await detailsLink.boundingBox();
+    expect(box?.height).toBeGreaterThanOrEqual(44);
+  }
+
+  await detailsLink.click();
+  await expect(page).toHaveURL(/#overview$/);
+  await expect(page.locator("#overview")).toBeFocused();
+
+  await page.goto("/");
+  const inquiryLink = page.getByRole("link", { name: "Inquire" });
+  await expect(inquiryLink).toHaveAttribute("href", "#contact");
+  await inquiryLink.click();
+  await expect(page).toHaveURL(/#contact$/);
+});
+
 test("gallery opens, advances, and closes with the keyboard", async ({ page }) => {
   await page.goto("/");
   const first = page.locator(".gallery-item").first();
