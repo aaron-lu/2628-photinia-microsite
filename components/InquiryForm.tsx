@@ -12,12 +12,19 @@ type FormState =
 export function InquiryForm({ inquiry, propertyId }: Readonly<{ inquiry: BrandedPageModel["inquiry"]; propertyId: string }>) {
   const [state, setState] = useState<FormState>({ kind: "idle" });
   const submissionId = useRef<string | null>(null);
+  const submitting = useRef(false);
+  const lastPayload = useRef<string | null>(null);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submitting.current) return;
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const fingerprint = JSON.stringify(["name", "email", "phone", "message", "consent"].map((key) => formData.get(key)));
+    if (lastPayload.current !== fingerprint) submissionId.current = null;
+    lastPayload.current = fingerprint;
     submissionId.current ??= crypto.randomUUID();
+    submitting.current = true;
     setState({ kind: "submitting" });
     try {
       const response = await fetch("/api/inquiry", {
@@ -43,6 +50,8 @@ export function InquiryForm({ inquiry, propertyId }: Readonly<{ inquiry: Branded
       }
     } catch {
       // The actionable fallback is shown below for network and server failures.
+    } finally {
+      submitting.current = false;
     }
     setState({ kind: "error", message: "Your inquiry was not delivered. Please contact the listing team directly." });
   }

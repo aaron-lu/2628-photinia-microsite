@@ -14,7 +14,7 @@ npm ci
 npm run dev
 ```
 
-Copy `.env.example` to `.env.local` only when configuring inquiry delivery. Never commit credentials. The form appears only when `BLOB_READ_WRITE_TOKEN` is available, so an unconfigured deployment cannot present a dead form.
+Copy `.env.example` to `.env.local` only when configuring inquiry delivery. Never commit credentials. The form requires `BLOB_STORE_ID` (Vercel OIDC) or a legacy `BLOB_READ_WRITE_TOKEN`, plus a separate `INQUIRY_RECEIPT_SECRET` of at least 32 characters. Preview capture is disabled unless explicitly enabled with a separate test store. See `FORM_SETUP.md` for notification setup and the read-only reconciliation command. Storage remains available without email configuration; notification outcomes make that limitation explicit to operators.
 
 ## Editing listing content
 

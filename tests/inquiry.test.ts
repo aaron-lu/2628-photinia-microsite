@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { POST } from "../app/api/inquiry/route";
-import { handleInquiryRequest, type CapturedInquiry } from "../lib/inquiry-delivery";
+import { handleInquiryRequest, InquiryConflictError, type CapturedInquiry } from "../lib/inquiry-delivery";
 
 const validInquiry = {
   propertyId: "2628-photinia",
@@ -40,14 +40,14 @@ test("rejects cross-origin submissions", async () => {
 });
 
 test("fails visibly when durable delivery is not configured", async () => {
-  const previous = process.env.BLOB_READ_WRITE_TOKEN;
-  delete process.env.BLOB_READ_WRITE_TOKEN;
+  const previous = process.env.INQUIRY_RECEIPT_SECRET;
+  delete process.env.INQUIRY_RECEIPT_SECRET;
   try {
     const response = await POST(request(validInquiry));
     assert.equal(response.status, 503);
   } finally {
-    if (previous) process.env.BLOB_READ_WRITE_TOKEN = previous;
-    else delete process.env.BLOB_READ_WRITE_TOKEN;
+    if (previous) process.env.INQUIRY_RECEIPT_SECRET = previous;
+    else delete process.env.INQUIRY_RECEIPT_SECRET;
   }
 });
 
@@ -104,4 +104,22 @@ test("rejects a property identifier that is not the server-configured listing", 
   });
   assert.equal(response.status, 400);
   assert.equal(stored, false);
+});
+
+test("duplicate retries return a receipt without notifying twice", async () => {
+  let notifications = 0;
+  const response = await handleInquiryRequest(request(validInquiry), {
+    ...delivery(async () => {}), store: async () => ({ created: false }), notify: async () => { notifications++; },
+  });
+  assert.equal(response.status, 201);
+  assert.equal(notifications, 0);
+});
+
+test("storage failure never reports success and conflicting retries return 409", async () => {
+  const originalError = console.error;
+  console.error = () => {};
+  try {
+    assert.equal((await handleInquiryRequest(request(validInquiry), delivery(async () => { throw new Error("offline"); }))).status, 503);
+    assert.equal((await handleInquiryRequest(request(validInquiry), delivery(async () => { throw new InquiryConflictError(); }))).status, 409);
+  } finally { console.error = originalError; }
 });

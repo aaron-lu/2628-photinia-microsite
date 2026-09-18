@@ -21,18 +21,23 @@ In the Vercel project:
 1. Open **Storage** and create or connect a Blob store.
 2. Choose **Private** access.
 3. Connect it to the Production environment. Add Preview and Development only if test submissions should use the same store.
-4. Confirm that Vercel created `BLOB_READ_WRITE_TOKEN`.
-5. Redeploy the project after changing environment variables.
+4. Confirm that Vercel created `BLOB_STORE_ID`. The SDK uses Vercel's short-lived OIDC identity; no static Blob token is required. A legacy `BLOB_READ_WRITE_TOKEN` also remains supported for local/legacy setups.
+5. Add a random, server-only `INQUIRY_RECEIPT_SECRET` of at least 32 characters. Keep it stable across deployments; rotating it changes retry IDs. Do not use the store ID, webhook public key, or an OIDC token as this secret.
+6. Redeploy the project after changing environment variables.
 
-The branded page shows the form only when `BLOB_READ_WRITE_TOKEN` is available. Without it, visitors see direct phone and email links instead of a form that cannot deliver.
+The branded page and endpoint share one configuration check: a Blob store ID or legacy token plus the dedicated receipt secret. Missing configuration keeps the direct phone/email fallback. Store access is verified by the actual write, not merely by the presence of a variable. The SDK already supports OIDC in the locked dependency version.
+
+Preview capture is disabled by default even if the production store is connected there. Only set `INQUIRY_PREVIEW_ENABLED=true` after connecting a separate private test store. Do not attach production email recipients to preview testing.
 
 Lead records are stored under:
 
 ```text
-leads/2628-photinia/YYYY-MM-DD/<receipt-id>.json
+leads/2628-photinia/<receipt-id>.json
 ```
 
 They are private and must not be exposed through a public Blob URL.
+
+Existing records under dated directories remain untouched. New keys omit the date so a retry across midnight cannot create a second lead. Creates use `allowOverwrite: false`; identical retries acknowledge the original without changing its timestamp or sending another notification. A changed payload with the same submission ID is rejected. The browser generates a new ID when the visitor edits a failed submission.
 
 ## 2. Add optional email alerts with Resend
 
@@ -44,14 +49,20 @@ Use a direct Resend account; a paid Vercel Marketplace integration is not requir
 
 ```text
 RESEND_API_KEY=re_...
-LEAD_NOTIFICATION_TO=agent@example.com,operations@example.com
+LEAD_NOTIFICATION_TO=andre.wang@compass.com
 LEAD_NOTIFICATION_FROM=2628 Photinia <inquiries@verified-domain.example>
 LEAD_NOTIFICATION_SUBJECT=New inquiry for 2628 Photinia Court
 ```
 
 `LEAD_NOTIFICATION_TO` accepts one or more comma-separated addresses. `LEAD_NOTIFICATION_FROM` must use the domain verified in Resend. Keep all secrets in Vercel; never commit them or paste them into a pull request.
 
-If all three required Resend settings are absent, inquiry storage continues without email. If only some are configured, storage still succeeds but Vercel logs a notification configuration error.
+Andre is the sole approved recipient for now. Configure a verified sender and API key before relying on email alerts. Incomplete configuration still allows durable capture but records `not_configured`; it does not silently claim to send email.
+
+Network errors, HTTP 429, and 5xx responses receive up to three attempts with the same provider idempotency key. Permanent errors stop immediately. A successful API response means provider acceptance, not proof of inbox delivery. The result is stored separately at `notifications/2628-photinia/<receipt-id>.json` with status, attempts, timestamp, and a non-sensitive reason code. Lead contents are never logged.
+
+After a hard function interruption, an outcome may be absent even though the lead was saved or email was accepted. Do not blindly resend: check Resend delivery records first. Duplicate browser retries do not re-run notifications. This is bounded retry, not a durable background queue.
+
+Run `node scripts/check-inquiry-notifications.mjs` in an authorized environment to list unresolved, failed, or unconfigured receipt IDs (exit code 2 means attention required). It does not read buyer JSON or send email. Someone must run this reconciliation regularly, particularly while email is unconfigured. No automatic monitor or email queue has been provisioned.
 
 ## 3. Production acceptance test
 
@@ -100,4 +111,4 @@ Assign and document:
 - the process for locating and deleting a lead by receipt ID; and
 - who monitors Vercel function logs and Resend delivery failures.
 
-There is intentionally no automatic deletion policy until the listing team approves a retention window. There is also no retry queue or CRM synchronization; Blob preserves the lead, and an operator must recover from a failed notification.
+Automatic deletion remains disabled at the owner's explicit request. There is no CRM synchronization or durable retry queue; private Blob preserves the lead and operator reconciliation handles notifications that remain unresolved after bounded retries. Restrict store access to those responsible for inquiries, and do not expose the store or an unauthenticated lead-reading endpoint.
