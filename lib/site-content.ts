@@ -32,6 +32,23 @@ const agentSchema = z.object({
   }).optional(),
 });
 
+const recentListingSchema = z.object({
+  status: z.string().min(1),
+  price: z.string().min(1),
+  beds: z.number().int().positive(),
+  baths: z.number().positive(),
+  interior: z.string().min(1),
+  street: z.string().min(1),
+  locality: z.string().min(1),
+  url: z.url(),
+  image: z.object({
+    src: z.url(),
+    width: z.number().int().positive(),
+    height: z.number().int().positive(),
+    alt: z.string().min(8),
+  }),
+});
+
 const resourceSchema = z.object({
   title: z.string().min(1),
   body: z.string().min(1),
@@ -76,6 +93,7 @@ export const generatedListingSchema = z
       brokerageName: z.string().min(1),
       wordmark: z.string().min(1),
       agents: z.array(agentSchema).min(1),
+      recentListings: z.array(recentListingSchema),
       colors: z.object({
         paper: z.string(), ink: z.string(), accent: z.string(), soft: z.string(),
       }),

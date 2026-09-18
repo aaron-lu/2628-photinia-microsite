@@ -45,6 +45,7 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
           <a href="#details">Details</a>
           <a href="#gallery">Gallery</a>
           <a href="#neighborhood">Neighborhood</a>
+          {page.kind === "branded" && page.brand.recentListings.length > 0 ? <a href="#listings">Listings</a> : null}
         </nav>
         {page.kind === "branded" ? <a className="header-cta" href="#contact">Inquire</a> : <a className="mls-mark" href="#overview">Property details</a>}
       </header>
@@ -132,6 +133,41 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
           ) : null}
           <p className="school-note">School boundaries, capacity, overflow placement, and enrollment can change. Verify directly with Pleasanton Unified.</p>
         </section>
+
+        {page.kind === "branded" && page.brand.recentListings.length > 0 ? (
+          <section className="recent-listings section-shell" id="listings">
+            <div className="recent-listings-heading">
+              <p className="section-kicker">Selected listings</p>
+              <h2>Current and recent homes.</h2>
+            </div>
+            <div className="recent-listings-grid">
+              {page.brand.recentListings.map((listing) => (
+                <article className="recent-listing-card" key={listing.street}>
+                  <a href={listing.url} target="_blank" rel="noreferrer" aria-label={`View ${listing.street}`}>
+                    <div className="recent-listing-image" style={{ "--photo-ratio": `${listing.image.width} / ${listing.image.height}` } as CSSProperties}>
+                      <Image
+                        src={listing.image.src}
+                        alt={listing.image.alt}
+                        fill
+                        sizes="(max-width: 840px) 82vw, 25vw"
+                      />
+                    </div>
+                    <div className="recent-listing-copy">
+                      <div className="recent-listing-summary">
+                        <span>{listing.status}</span>
+                        <strong>{listing.price}</strong>
+                      </div>
+                      <p>{listing.beds} bd · {listing.baths} ba · {listing.interior}</p>
+                      <h3>{listing.street}</h3>
+                      <p>{listing.locality}</p>
+                      <span className="recent-listing-link">View listing</span>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {page.kind === "branded" ? (
           <section className="contact" id="contact">

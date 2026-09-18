@@ -16,6 +16,7 @@ test("MLS projection has no brand, agents, or inquiry capability", async () => {
   assert.equal(mls.kind, "mls");
   assert.equal("brand" in mls, false);
   assert.equal("inquiry" in mls, false);
+  assert.equal(serialized.includes("recentListings".toLowerCase()), false);
   assert.equal(serialized.includes(source.brand.brokerageName.toLowerCase()), false);
   for (const agent of source.brand.agents) {
     assert.equal(serialized.includes(agent.email.toLowerCase()), false);
@@ -29,6 +30,7 @@ test("branded projection retains approved contact content", async () => {
 
   assert.equal(branded.kind, "branded");
   assert.equal(branded.brand.agents.length > 0, true);
+  assert.equal(branded.brand.recentListings.length > 0, true);
   assert.equal(branded.inquiry.heading.length > 0, true);
 });
 
