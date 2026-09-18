@@ -102,7 +102,16 @@ test("public copy contains no staging or internal QA language", async ({ page })
   ]) {
     expect(publicCopy).not.toContain(internalPhrase);
   }
-  expect(publicCopy).not.toContain("garden rooms");
+  for (const ungroundedPhrase of [
+    "garden rooms",
+    "outdoor rooms",
+    "follow the light",
+    "space opens up",
+    "thoughtfully presented",
+    "time in the garden",
+  ]) {
+    expect(publicCopy).not.toContain(ungroundedPhrase);
+  }
   await expect(page.locator(".pull-quote")).toHaveCount(0);
   expect(publicCopy).not.toMatch(/[↗↘➜➝➞⟶]/);
 });
@@ -151,6 +160,7 @@ test("team feedback refinements keep the editorial layout balanced", async ({ pa
   await page.goto("/");
 
   expect(await page.locator(".site-header .wordmark span").evaluate((element) => getComputedStyle(element).borderRadius)).toBe("0px");
+  expect(await page.locator(".site-header .wordmark span").evaluate((element) => getComputedStyle(element).borderBottomStyle)).toBe("none");
 
   const factSizes = await page.locator(".fact dd").evaluateAll((items) => items.map((item) => Number.parseFloat(getComputedStyle(item).fontSize)));
   expect(Math.max(...factSizes) - Math.min(...factSizes)).toBeLessThanOrEqual(0.1);

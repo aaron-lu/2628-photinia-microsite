@@ -25,7 +25,7 @@ img { display: block; max-width: 100%; }
 
 .site-header { position: absolute; inset: 0 0 auto; z-index: 10; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 22px clamp(20px, 4vw, 64px); color: #fff; }
 .wordmark { display: inline-flex; align-items: center; gap: 10px; width: fit-content; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
-.wordmark span { display: inline-block; padding-bottom: 3px; border-bottom: 1px solid currentColor; font-size: 11px; letter-spacing: .12em; }
+.wordmark span { display: inline-block; font-size: 11px; letter-spacing: .12em; }
 .site-header nav { display: flex; gap: clamp(24px, 4vw, 58px); font-size: 12px; letter-spacing: .11em; text-transform: uppercase; }
 .site-header nav a, .header-cta { opacity: .88; transition: opacity .2s ease; }
 .site-header nav a:hover, .header-cta:hover { opacity: 1; }

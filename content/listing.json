@@ -49,34 +49,34 @@
       "value": "$230/mo"
     }
   ],
-  "headline": "Light rises through the center of the home.",
-  "introduction": "Double-height living spaces, an open stair, and a dual-sided fireplace give the interior its sense of connection. Beyond the glass, a courtyard, pergola patio, and green side yard create a sequence of outdoor rooms.",
+  "headline": "A former model home with vaulted living spaces.",
+  "introduction": "The 2,192-square-foot plan includes four bedrooms, two and a half bathrooms, connected living and family rooms, and an eat-in kitchen. Owned solar, an EV-ready two-car garage, and private outdoor areas add practical flexibility.",
   "sections": [
     {
-      "title": "A room that reaches upward",
+      "title": "Living and family rooms, connected",
       "body": [
-        "Tall windows, vaulted volume, and the open stair make the living room the spatial center of the house. Built-in cabinetry and the dual-sided fireplace carry that connection into the adjacent family room."
+        "Vaulted ceilings and tall windows bring natural light into the living room. A dual-sided fireplace connects the living and family rooms, and built-in cabinetry adds practical storage."
       ],
       "photoId": "upper-overlook"
     },
     {
-      "title": "Kitchen, dining, and patio in one easy sequence",
+      "title": "An eat-in kitchen with patio access",
       "body": [
-        "The center-island kitchen opens toward everyday dining and glass doors to the patio, keeping cooking, conversation, and outdoor access within one connected part of the plan."
+        "The kitchen includes granite countertops, a center island, cabinet storage, and an eat-in dining area. A sliding glass door opens to the patio."
       ],
       "photoId": "kitchen-wide"
     },
     {
-      "title": "Outdoor rooms with shade and greenery",
+      "title": "Private outdoor areas",
       "body": [
-        "A sheltered courtyard, a pergola-framed rear patio, and a green side yard form distinct settings for a quiet morning, an open-air meal, or time in the garden."
+        "The property includes a private courtyard, a rear patio with a pergola, and a fenced side yard. Mature landscaping provides shade around the patio."
       ],
       "photoId": "pergola-patio"
     }
   ],
   "neighborhood": {
-    "title": "Parks, practical stops, and regional rail",
-    "introduction": "Stoneridge Place offers shared amenities and a convenient Pleasanton setting near neighborhood parks, everyday shopping, regional trails, and BART. Distances and availability should be independently verified.",
+    "title": "Parks, shopping, and BART",
+    "introduction": "The Stoneridge Place community includes a pool, spa, and neighborhood park. Amaral Park, Pacific Pearl shopping center, and Dublin / Pleasanton BART are nearby. Route estimates below should be independently verified.",
     "highlights": [
       {
         "title": "Amaral Park",
@@ -410,9 +410,9 @@
     }
   },
   "inquiry": {
-    "heading": "Arrange a closer look at Photinia Court",
+    "heading": "Schedule a private showing",
     "introduction": "Schedule a private showing or ask the listing team a question about the property.",
-    "defaultMessage": "I’m interested in learning more about 2628 Photinia Court.",
+    "defaultMessage": "I'm interested in learning more about 2628 Photinia Court.",
     "consentText": "I agree that the listing team may contact me about this property.",
     "privacyUrl": "https://www.compass.com/legal/privacy-policy/"
   },
@@ -423,7 +423,7 @@
   "seo": {
     "siteUrl": "https://2628-photinia-microsite.vercel.app",
     "brandedTitle": "2628 Photinia Court, Pleasanton | 4-Bedroom Home",
-    "brandedDescription": "Tour 2628 Photinia Court in Pleasanton’s Stoneridge Place: 4 bedrooms, 2.5 bathrooms, 2,192 square feet, garden patios, and a 2-car garage.",
+    "brandedDescription": "Tour 2628 Photinia Court in Pleasanton's Stoneridge Place: 4 bedrooms, 2.5 bathrooms, 2,192 square feet, a private courtyard, rear patio, and 2-car garage.",
     "mlsTitle": "2628 Photinia Court, Pleasanton, CA 94588",
     "mlsDescription": "Property details and photography for 2628 Photinia Court, a four-bedroom home in Pleasanton, California."
   }

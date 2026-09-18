@@ -62,7 +62,7 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
             <div className="hero-shade" aria-hidden="true" />
           </div>
           <div className="hero-copy">
-            <p className="hero-eyebrow">Light-filled living in Pleasanton</p>
+            <p className="hero-eyebrow">Former model home in Stoneridge Place</p>
             <h1><span>{property.identity.street.split(" ")[0]}</span>{property.identity.street.split(" ").slice(1).join(" ")}</h1>
             <div className="hero-meta">
               <p>{cityLine}</p>
@@ -98,12 +98,12 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
         </section>
 
         <section id="gallery" className="gallery-section">
-          <div className="gallery-heading section-shell"><div><p className="section-kicker">Inside &amp; out</p><h2>Follow the light through the house.</h2></div></div>
+          <div className="gallery-heading section-shell"><div><p className="section-kicker">Property gallery</p><h2>See the property room by room.</h2></div></div>
           <Gallery photos={property.gallery} />
         </section>
 
         <section className="features section-shell">
-          <div className="features-intro"><p className="section-kicker">Three perspectives</p><h2>Space opens up, then steps outside.</h2></div>
+          <div className="features-intro"><p className="section-kicker">Property highlights</p><h2>Living spaces, kitchen, and outdoor areas.</h2></div>
           <div className="feature-list">
             {property.sections.map((section, index) => (
               <article className="feature" key={section.title}>
