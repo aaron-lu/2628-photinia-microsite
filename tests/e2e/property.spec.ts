@@ -143,7 +143,8 @@ test("both listing advisors have centered, distinct profiles", async ({ page }) 
 
   const profiles = page.locator(".agent-profile");
   await expect(profiles).toHaveCount(2);
-  await expect(page.locator(".agent-profile .agent-monogram")).toHaveText(["SS"]);
+  await expect(page.locator(".agent-profile .agent-monogram")).toHaveCount(0);
+  await expect(page.getByRole("img", { name: "Portrait of Shug Sidhu standing outdoors in a dark suit" })).toBeVisible();
   await expect(page.getByRole("img", { name: "Portrait of Andre Wang seated in a living room" })).toBeVisible();
 
   const alignment = await profiles.evaluateAll((items) => items.map((item) => {

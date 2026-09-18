@@ -382,9 +382,15 @@
         "role": "Listing Agent",
         "brokerage": "Compass",
         "license": "DRE #02031219",
-        "phone": "(510) 856-6450",
-        "email": "shug.sidhu@compass.com",
-        "initials": "SS"
+      "phone": "(510) 856-6450",
+      "email": "shug.sidhu@compass.com",
+      "initials": "SS",
+      "headshot": {
+        "src": "/agents/shug-sidhu.jpg",
+        "width": 1280,
+        "height": 854,
+        "alt": "Portrait of Shug Sidhu standing outdoors in a dark suit"
+      }
       },
       {
         "name": "Andre Wang",
