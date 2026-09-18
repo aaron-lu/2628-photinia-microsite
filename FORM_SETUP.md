@@ -9,7 +9,7 @@ Every valid inquiry follows this order:
 1. `/api/inquiry` validates the fields, origin, property ID, consent, and request size.
 2. Vercel Basic BotID and a hidden honeypot reduce automated submissions.
 3. The server writes the complete inquiry to a **private Vercel Blob store**.
-4. The visitor receives a success message and receipt ID only after that durable write succeeds.
+4. After durable storage succeeds, the form resets without displaying confirmation text. The API still returns a receipt ID for internal tracing.
 5. If Resend is configured, the server then sends an email notification with the buyer as the reply-to address.
 
 Blob is the system of record. Resend is only a notification channel. If Resend is unavailable, the lead remains stored and the notification failure is written to the Vercel function logs.
@@ -70,7 +70,7 @@ After every storage, notification, domain, or recipient change:
 
 1. Open the production branded route, not `/mls`.
 2. Submit a lead named `QA TEST — DELETE` using an inbox the tester controls.
-3. Save the receipt ID shown by the form.
+3. Save the receipt ID from the `/api/inquiry` response in browser developer tools (Network tab). Successful submission resets the form without showing confirmation text.
 4. In the Vercel Blob browser, locate the JSON record whose filename matches that receipt ID.
 5. Confirm the stored name, email, phone, message, property ID, consent, and timestamp.
 6. When Resend is enabled, confirm the notification reached every intended recipient and that Reply uses the test buyer address.
