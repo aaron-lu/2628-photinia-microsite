@@ -393,7 +393,13 @@
         "license": "DRE #02073067",
         "phone": "(510) 386-0028",
         "email": "andre.wang@compass.com",
-        "initials": "AW"
+        "initials": "AW",
+        "headshot": {
+          "src": "/agents/andre-wang.jpg",
+          "width": 1067,
+          "height": 1091,
+          "alt": "Portrait of Andre Wang seated in a living room"
+        }
       }
     ],
     "colors": {

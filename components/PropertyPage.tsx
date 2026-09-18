@@ -62,7 +62,7 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
             <div className="hero-shade" aria-hidden="true" />
           </div>
           <div className="hero-copy">
-            <p className="hero-eyebrow">Light, volume, and garden rooms in Pleasanton</p>
+            <p className="hero-eyebrow">Light-filled living in Pleasanton</p>
             <h1><span>{property.identity.street.split(" ")[0]}</span>{property.identity.street.split(" ").slice(1).join(" ")}</h1>
             <div className="hero-meta">
               <p>{cityLine}</p>
@@ -132,8 +132,6 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
           <p className="school-note">School boundaries, capacity, overflow placement, and enrollment can change. Verify directly with Pleasanton Unified.</p>
         </section>
 
-        <section className="pull-quote" aria-label="Property introduction"><blockquote><p>“Volume inside. Garden rooms outside.”</p><cite>{property.identity.street}</cite></blockquote></section>
-
         {page.kind === "branded" ? (
           <section className="contact" id="contact">
             <div className="agent-card">
@@ -144,7 +142,13 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
               <div className="agents">
                 {page.brand.agents.map((agent) => (
                   <article className="agent-profile" key={agent.email}>
-                    <div className="agent-monogram" aria-hidden="true">{agent.initials}</div>
+                    {agent.headshot ? (
+                      <div className="agent-portrait agent-headshot">
+                        <Image src={agent.headshot.src} alt={agent.headshot.alt} fill sizes="132px" loading="eager" />
+                      </div>
+                    ) : (
+                      <div className="agent-portrait agent-monogram" aria-hidden="true">{agent.initials}</div>
+                    )}
                     <div className="agent-profile-copy">
                       <h3>{agent.name}</h3><p>{agent.role}</p><p>{agent.license}</p>
                       <a href={phoneHref(agent.phone)}>{agent.phone}</a>

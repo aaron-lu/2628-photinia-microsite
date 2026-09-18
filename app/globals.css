@@ -25,7 +25,7 @@ img { display: block; max-width: 100%; }
 
 .site-header { position: absolute; inset: 0 0 auto; z-index: 10; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 22px clamp(20px, 4vw, 64px); color: #fff; }
 .wordmark { display: inline-flex; align-items: center; gap: 10px; width: fit-content; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
-.wordmark span { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 32px; border: 1px solid currentColor; border-radius: 50%; font-family: var(--serif); font-size: 13px; font-style: italic; letter-spacing: 0; }
+.wordmark span { display: inline-block; padding-bottom: 3px; border-bottom: 1px solid currentColor; font-size: 11px; letter-spacing: .12em; }
 .site-header nav { display: flex; gap: clamp(24px, 4vw, 58px); font-size: 12px; letter-spacing: .11em; text-transform: uppercase; }
 .site-header nav a, .header-cta { opacity: .88; transition: opacity .2s ease; }
 .site-header nav a:hover, .header-cta:hover { opacity: 1; }
@@ -53,11 +53,10 @@ img { display: block; max-width: 100%; }
 .address-price h2 span { display: block; margin-top: 20px; color: var(--muted); font-family: var(--sans); font-size: clamp(13px, 1.3vw, 16px); font-weight: 400; letter-spacing: .11em; line-height: 1.4; text-transform: uppercase; }
 .micro-label { margin-bottom: 10px; color: var(--muted); }
 .price { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3vw, 44px); }
-.facts-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin: 0; border-block: 1px solid var(--line); }
+.facts-grid { display: grid; grid-template-columns: minmax(0, .85fr) repeat(6, minmax(0, 1fr)); margin: 0; border-block: 1px solid var(--line); }
 .fact { display: flex; min-width: 0; flex-direction: column; padding: 28px 18px 28px 0; }
-.fact + .fact { padding-left: clamp(18px, 3vw, 48px); border-left: 1px solid var(--line); }
-.fact dd { order: -1; margin: 0 0 10px; font-family: var(--serif); font-size: clamp(27px, 3vw, 46px); letter-spacing: -.04em; line-height: 1; }
-.fact:last-child dd { font-size: clamp(19px, 2vw, 30px); white-space: nowrap; }
+.fact + .fact { padding-left: clamp(18px, 2vw, 28px); border-left: 1px solid var(--line); }
+.fact dd { order: -1; margin: 0 0 10px; font-family: var(--serif); font-size: clamp(27px, 2.4vw, 34px); letter-spacing: -.04em; line-height: 1; }
 .fact dt { color: var(--muted); font-size: 12px; letter-spacing: .15em; text-transform: uppercase; }
 
 .narrative { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .65fr); gap: clamp(48px, 10vw, 160px); padding-bottom: clamp(100px, 12vw, 180px); }
@@ -101,20 +100,18 @@ img { display: block; max-width: 100%; }
 .neighborhood-grid > a { display: flex; flex-direction: column; min-height: 350px; padding: clamp(26px, 3.5vw, 48px); border: 1px solid var(--line); transition: background .25s ease, color .25s ease; }
 .neighborhood-grid > a:hover { background: var(--ink); color: var(--paper); }
 .neighborhood-grid span, .neighborhood-grid small { color: var(--accent); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; }
-.neighborhood-grid h3 { margin: auto 0 22px; font-family: var(--serif); font-size: clamp(30px, 3vw, 46px); font-weight: 400; letter-spacing: -.035em; line-height: 1; }
+.neighborhood-grid h3 { margin: 28px 0 22px; font-family: var(--serif); font-size: clamp(30px, 3vw, 46px); font-weight: 400; letter-spacing: -.035em; line-height: 1; }
 .neighborhood-grid p { margin: 0 0 30px; color: var(--muted); font-family: var(--serif); font-size: 17px; line-height: 1.55; }
 .neighborhood-grid > a:hover p { color: rgba(241,238,230,.72); }
 .school-note { max-width: 850px; margin: 28px 0 0; color: var(--muted); font-size: 11px; letter-spacing: .08em; line-height: 1.65; text-transform: uppercase; }
-.pull-quote { display: flex; align-items: center; justify-content: center; min-height: min(680px, 78svh); padding: 70px 24px; background: var(--accent); color: var(--paper); text-align: center; }
-.pull-quote blockquote { max-width: 1100px; margin: 0; }
-.pull-quote p { margin: 0 0 42px; font-family: var(--serif); font-size: clamp(48px, 8.8vw, 126px); font-style: italic; letter-spacing: -.055em; line-height: .95; }
-.pull-quote cite { font-style: normal; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
-
 .contact { display: grid; grid-template-columns: 1fr 1fr; background: var(--ink); color: var(--paper); }
 .agent-card, .lead-panel { padding: clamp(72px, 8vw, 130px) clamp(24px, 7vw, 110px); }
 .agent-card { display: grid; align-content: center; background: color-mix(in srgb, var(--ink) 88%, var(--paper)); }
 .agent-team-heading { text-align: center; }
-.agent-monogram { display: flex; width: clamp(104px, 8vw, 132px); align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 50%; background: var(--soft-accent); color: var(--ink); font-family: var(--serif); font-size: clamp(36px, 4vw, 56px); font-style: italic; }
+.agent-portrait { position: relative; display: flex; width: clamp(104px, 8vw, 132px); align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 50%; }
+.agent-monogram { background: var(--soft-accent); color: var(--ink); font-family: var(--serif); font-size: clamp(36px, 4vw, 56px); font-style: italic; }
+.agent-headshot { overflow: hidden; background: var(--soft-accent); }
+.agent-headshot img { object-fit: cover; }
 .agent-card h2, .lead-panel h2 { font-size: clamp(40px, 5vw, 68px); }
 .agent-card h2 { margin-bottom: 44px; }
 .agents { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
@@ -216,7 +213,7 @@ img { display: block; max-width: 100%; }
   .agents { grid-template-columns: 1fr; }
   .agent-profile { padding-inline: 0; }
   .agent-profile + .agent-profile { margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(241,238,230,.2); border-left: 0; }
-  .agent-monogram { width: 120px; }
+  .agent-portrait { width: 120px; }
   .form-row { grid-template-columns: 1fr; }
   .direct-inquiry > div { grid-template-columns: 1fr 1fr; }
   .direct-inquiry strong { grid-column: 1 / -1; }
