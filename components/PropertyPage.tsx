@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import type { PageModel, PropertyPhoto } from "@/lib/site-content";
 import { Gallery } from "./Gallery";
 import { InquiryForm } from "./InquiryForm";
+import { inquiryCaptureEnabled } from "@/lib/inquiry-config";
 
 function phoneHref(phone: string) {
   return `tel:${phone.replace(/[^+\d]/g, "")}`;
@@ -23,7 +24,7 @@ export function PropertyPage({ page }: Readonly<{ page: PageModel }>) {
     .slice(0, 3)
     .map((fact) => `${fact.value} ${fact.label.toLowerCase()}`)
     .join(" · ");
-  const inquiryDeliveryEnabled = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+  const inquiryDeliveryEnabled = inquiryCaptureEnabled();
   const themeStyle: CSSProperties & Record<`--${string}`, string> = {
     "--paper": property.theme.paper,
     "--ink": property.theme.ink,

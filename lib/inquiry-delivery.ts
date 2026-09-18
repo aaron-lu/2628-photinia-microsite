@@ -22,10 +22,12 @@ export type CapturedInquiry = Omit<InquiryPayload, "website" | "submissionId"> &
 export type InquiryDelivery = Readonly<{
   propertyId: string;
   createReceiptId: (submissionId: string) => string;
-  store: (inquiry: CapturedInquiry) => Promise<void>;
+  store: (inquiry: CapturedInquiry) => Promise<void | { created: boolean }>;
   notify?: (inquiry: CapturedInquiry) => Promise<void>;
   defer?: (task: () => Promise<void>) => void;
 }>;
+
+export class InquiryConflictError extends Error {}
 
 function error(message: string, status: number) {
   return Response.json({ error: message }, { status });
@@ -76,14 +78,21 @@ export async function handleInquiryRequest(request: Request, delivery: InquiryDe
     capturedAt: new Date().toISOString(),
   };
 
-  await delivery.store(captured);
+  let stored: void | { created: boolean };
+  try {
+    stored = await delivery.store(captured);
+  } catch (cause) {
+    if (cause instanceof InquiryConflictError) return error("Submission ID already used for another inquiry", 409);
+    console.error("inquiry_storage_failed", { receiptId });
+    return error("Unable to save inquiry. Please retry or contact the listing team directly.", 503);
+  }
 
-  if (delivery.notify) {
+  if (delivery.notify && stored?.created !== false) {
     const notify = async () => {
       try {
         await delivery.notify?.(captured);
-      } catch (notificationError) {
-        console.error("Inquiry captured, but notification failed", notificationError);
+      } catch {
+        console.error("inquiry_notification_unresolved", { receiptId });
       }
     };
     if (delivery.defer) delivery.defer(notify);
