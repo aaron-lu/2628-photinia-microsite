@@ -6,7 +6,6 @@ import type { BrandedPageModel } from "@/lib/site-content";
 type FormState =
   | { kind: "idle" }
   | { kind: "submitting" }
-  | { kind: "success"; receiptId: string }
   | { kind: "error"; message: string };
 
 export function InquiryForm({ inquiry, propertyId }: Readonly<{ inquiry: BrandedPageModel["inquiry"]; propertyId: string }>) {
@@ -43,7 +42,7 @@ export function InquiryForm({ inquiry, propertyId }: Readonly<{ inquiry: Branded
       });
       const payload: unknown = await response.json().catch(() => null);
       if (response.ok && typeof payload === "object" && payload !== null && "receiptId" in payload && typeof payload.receiptId === "string") {
-        setState({ kind: "success", receiptId: payload.receiptId });
+        setState({ kind: "idle" });
         submissionId.current = null;
         form.reset();
         return;
@@ -68,7 +67,6 @@ export function InquiryForm({ inquiry, propertyId }: Readonly<{ inquiry: Branded
       <label className="consent"><input name="consent" type="checkbox" required /><span>{inquiry.consentText} <a href={inquiry.privacyUrl}>Privacy policy</a></span></label>
       <button type="submit" disabled={state.kind === "submitting"}>{state.kind === "submitting" ? "Sending" : "Send inquiry"}</button>
       <p className="form-status" aria-live="polite">
-        {state.kind === "success" ? `Inquiry received. Confirmation ${state.receiptId}.` : null}
         {state.kind === "error" ? state.message : null}
       </p>
     </form>

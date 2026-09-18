@@ -130,7 +130,10 @@ test("branded route always offers a functional inquiry path", async ({ page }) =
     await form.locator('input[name="email"]').fill("qa@example.com");
     await form.locator('input[name="consent"]').check();
     await form.getByRole("button", { name: "Send inquiry" }).click();
-    await expect(form.locator(".form-status")).toContainText("Inquiry received");
+    await expect(form.locator('input[name="name"]')).toHaveValue("");
+    await expect(form.locator(".form-status")).toBeEmpty();
+    await expect(page.getByText("Inquiry received", { exact: false })).toHaveCount(0);
+    await expect(page.getByText("11111111-1111-4111-8111-111111111111", { exact: false })).toHaveCount(0);
   } else {
     await expect(page.locator(".direct-inquiry")).toBeVisible();
     await expect(page.locator('.direct-inquiry a[href^="tel:"]').first()).toBeVisible();
