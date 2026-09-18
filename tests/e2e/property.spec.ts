@@ -161,6 +161,11 @@ test("team feedback refinements keep the editorial layout balanced", async ({ pa
 
   expect(await page.locator(".site-header .wordmark span").evaluate((element) => getComputedStyle(element).borderRadius)).toBe("0px");
   expect(await page.locator(".site-header .wordmark span").evaluate((element) => getComputedStyle(element).borderBottomStyle)).toBe("none");
+  const wordmarkSizes = await page.locator(".site-header .wordmark").evaluate((wordmark) => {
+    const number = wordmark.querySelector("span");
+    return [getComputedStyle(wordmark).fontSize, number ? getComputedStyle(number).fontSize : null];
+  });
+  expect(wordmarkSizes[1]).toBe(wordmarkSizes[0]);
 
   const factSizes = await page.locator(".fact dd").evaluateAll((items) => items.map((item) => Number.parseFloat(getComputedStyle(item).fontSize)));
   expect(Math.max(...factSizes) - Math.min(...factSizes)).toBeLessThanOrEqual(0.1);
