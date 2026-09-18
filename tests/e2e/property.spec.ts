@@ -128,9 +128,18 @@ test("branded route always offers a functional inquiry path", async ({ page }) =
     }));
     await form.locator('input[name="name"]').fill("QA Test");
     await form.locator('input[name="email"]').fill("qa@example.com");
+    const submitButton = form.getByRole("button", { name: "Send inquiry" });
+    await expect(submitButton).toBeDisabled();
+    await expect(submitButton).toHaveCSS("cursor", "not-allowed");
+    await form.locator('input[name="consent"]').check();
+    await expect(submitButton).toBeEnabled();
+    await form.locator('input[name="consent"]').uncheck();
+    await expect(submitButton).toBeDisabled();
     await form.locator('input[name="consent"]').check();
     await form.getByRole("button", { name: "Send inquiry" }).click();
     await expect(form.locator('input[name="name"]')).toHaveValue("");
+    await expect(form.locator('input[name="consent"]')).not.toBeChecked();
+    await expect(submitButton).toBeDisabled();
     await expect(form.locator(".form-status")).toBeEmpty();
     await expect(page.getByText("Inquiry received", { exact: false })).toHaveCount(0);
     await expect(page.getByText("11111111-1111-4111-8111-111111111111", { exact: false })).toHaveCount(0);
