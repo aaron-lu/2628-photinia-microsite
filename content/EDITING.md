@@ -16,7 +16,9 @@
 - Price, status, MLS number, facts, and verification date after an MLS refresh
 - Headline, introduction, feature copy, and neighborhood copy
 - Gallery order and focal points using existing approved photos
-- Agent details, disclosure language, colors, and SEO copy
+- Agent details, recent listing cards, disclosure language, colors, and SEO copy
+
+Recent listing cards live under `brand.recentListings`, so they appear only on the branded site. Update status, price, facts, link, and image together from an approved listing source. Removing every card hides the section automatically.
 
 Adding or replacing photos still goes through the factory so file dimensions, references, and mobile behavior are validated automatically.
 

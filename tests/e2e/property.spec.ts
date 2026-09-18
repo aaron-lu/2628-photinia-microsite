@@ -52,6 +52,23 @@ test("MLS route excludes contact capture and branding", async ({ page }) => {
   await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
   await expect(page.locator('a[href^="mailto:"]')).toHaveCount(0);
   await expect(page.locator(".brokerage-mark")).toHaveCount(0);
+  await expect(page.locator(".recent-listings")).toHaveCount(0);
+});
+
+test("branded route presents verified team listings as usable cards", async ({ page }) => {
+  await page.goto("/");
+  const cards = page.locator(".recent-listing-card");
+  await expect(cards).toHaveCount(4);
+  await expect(page.getByRole("heading", { name: "Current and recent homes." })).toBeVisible();
+  for (let index = 0; index < await cards.count(); index += 1) {
+    const link = cards.nth(index).getByRole("link");
+    await expect(link).toHaveAttribute("href", /^https:\/\/(24818saintluke\.com|websites\.open\.homes)\//);
+    await expect(link).toHaveAttribute("target", "_blank");
+  }
+  if ((page.viewportSize()?.width ?? 0) > 840) {
+    const linkBottoms = await page.locator(".recent-listing-link").evaluateAll((links) => links.map((link) => link.getBoundingClientRect().bottom));
+    expect(Math.max(...linkBottoms) - Math.min(...linkBottoms)).toBeLessThanOrEqual(1);
+  }
 });
 
 test("header calls to action navigate to meaningful mobile content", async ({ page }) => {
