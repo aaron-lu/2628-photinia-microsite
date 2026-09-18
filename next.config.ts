@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.openhomesphotography.com",
+        pathname: "/uploads/**",
+      },
+    ],
   },
   async headers() {
     return [

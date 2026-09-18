@@ -408,6 +408,72 @@
         }
       }
     ],
+    "recentListings": [
+      {
+        "status": "Current listing",
+        "price": "$1,198,000",
+        "beds": 4,
+        "baths": 3,
+        "interior": "2,179 sq ft",
+        "street": "24818 Saint Luke Court",
+        "locality": "Fairview, CA 94541",
+        "url": "https://24818saintluke.com/",
+        "image": {
+          "src": "https://cdn.openhomesphotography.com/uploads/24818-saint-luke-court.1f196685-43f3-6afe-a407-02ffe917ffb9/batchUploads/p3k.28fb0b1a-9c18-11f1-a101-02ffe917ffb9/processed/pictures/web/24818-saint-luke-court.93456.p3k.001.web.jpg",
+          "width": 2048,
+          "height": 1365,
+          "alt": "Front exterior of 24818 Saint Luke Court in Fairview"
+        }
+      },
+      {
+        "status": "Current listing",
+        "price": "$1,545,000",
+        "beds": 3,
+        "baths": 3,
+        "interior": "1,466 sq ft",
+        "street": "2932 Barrington Terrace",
+        "locality": "Fremont, CA 94536",
+        "url": "https://websites.open.homes/site/1f191ec3-bd7c-618c-8b16-02ffd8b76bfd",
+        "image": {
+          "src": "https://cdn.openhomesphotography.com/uploads/2932-barrington-terrace.1f191ec3-bd7c-618c-8b16-02ffd8b76bfd/batchUploads/p2k.9c85f6b0-95e4-11f1-ac3e-02ffd8b76bfd/processed/pictures/web/2932-barrington-terrace.93310.p2k.001.web.jpg",
+          "width": 2048,
+          "height": 1365,
+          "alt": "Front exterior of 2932 Barrington Terrace in Fremont"
+        }
+      },
+      {
+        "status": "Recent listing",
+        "price": "$1,395,000",
+        "beds": 2,
+        "baths": 1,
+        "interior": "936 sq ft",
+        "street": "734 Scott Boulevard",
+        "locality": "Santa Clara, CA 95050",
+        "url": "https://websites.open.homes/site/1f189fef-d2a9-6788-a6a4-02ffd8b76bfd",
+        "image": {
+          "src": "https://cdn.openhomesphotography.com/uploads/734-scott-boulevard.1f189fef-d2a9-6788-a6a4-02ffd8b76bfd/batchUploads/p1k.4505ad3c-8aee-11f1-aa51-02ffd8b76bfd/processed/pictures/web/734-scott-boulevard.92994.p1k.001.web.jpg",
+          "width": 2048,
+          "height": 1365,
+          "alt": "Front exterior of 734 Scott Boulevard in Santa Clara"
+        }
+      },
+      {
+        "status": "Recent listing",
+        "price": "$2,495,000",
+        "beds": 4,
+        "baths": 3,
+        "interior": "2,028 sq ft",
+        "street": "42642 Sully Street",
+        "locality": "Fremont, CA 94539",
+        "url": "https://websites.open.homes/site/1f11f361-0acf-60f0-9e09-02ffe917ffb9",
+        "image": {
+          "src": "https://cdn.openhomesphotography.com/uploads/42642-sully-street.1f11f361-0acf-60f0-9e09-02ffe917ffb9/batchUploads/p3k.75ef33b6-21a6-11f1-b5cf-02ffd8b76bfd/processed/pictures/web/42642-sully-street.88780.p3k.001_mls.web.jpg",
+          "width": 2048,
+          "height": 1365,
+          "alt": "Front exterior of 42642 Sully Street in Fremont"
+        }
+      }
+    ],
     "colors": {
       "paper": "#f5f1e9",
       "ink": "#192b33",

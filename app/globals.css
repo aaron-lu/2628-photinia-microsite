@@ -49,7 +49,7 @@ img { display: block; max-width: 100%; }
 .section-label { display: flex; align-items: center; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; }
 .status-pill { padding: 8px 11px; border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent); border-radius: 100px; background: color-mix(in srgb, var(--accent) 13%, transparent); color: var(--accent); font-size: 12px; letter-spacing: .13em; }
 .address-price { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(220px, .5fr); align-items: end; gap: 40px; padding: clamp(44px, 6vw, 84px) 0 clamp(54px, 7vw, 96px); }
-.address-price h2, .narrative h2, .gallery-heading h2, .features-intro h2, .neighborhood h2, .contact h2 { margin: 0; font-family: var(--serif); font-size: clamp(42px, 6.2vw, 84px); font-weight: 400; letter-spacing: -.045em; line-height: .98; }
+.address-price h2, .narrative h2, .gallery-heading h2, .features-intro h2, .neighborhood h2, .recent-listings h2, .contact h2 { margin: 0; font-family: var(--serif); font-size: clamp(42px, 6.2vw, 84px); font-weight: 400; letter-spacing: -.045em; line-height: .98; }
 .address-price h2 span { display: block; margin-top: 20px; color: var(--muted); font-family: var(--sans); font-size: clamp(13px, 1.3vw, 16px); font-weight: 400; letter-spacing: .11em; line-height: 1.4; text-transform: uppercase; }
 .micro-label { margin-bottom: 10px; color: var(--muted); }
 .price { margin: 0; font-family: var(--serif); font-size: clamp(30px, 3vw, 44px); }
@@ -104,6 +104,23 @@ img { display: block; max-width: 100%; }
 .neighborhood-grid p { margin: 0 0 30px; color: var(--muted); font-family: var(--serif); font-size: 17px; line-height: 1.55; }
 .neighborhood-grid > a:hover p { color: rgba(241,238,230,.72); }
 .school-note { max-width: 850px; margin: 28px 0 0; color: var(--muted); font-size: 11px; letter-spacing: .08em; line-height: 1.65; text-transform: uppercase; }
+
+.recent-listings { padding-top: clamp(76px, 9vw, 128px); padding-bottom: clamp(100px, 12vw, 180px); border-top: 1px solid var(--line); }
+.recent-listings-heading { display: grid; grid-template-columns: 1fr 2.25fr; gap: 30px; margin-bottom: clamp(54px, 7vw, 92px); }
+.recent-listings-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 2vw, 28px); }
+.recent-listing-card { min-width: 0; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 96%, white); }
+.recent-listing-card > a { display: flex; height: 100%; flex-direction: column; }
+.recent-listing-image { position: relative; aspect-ratio: var(--photo-ratio); overflow: hidden; background: var(--soft-accent); }
+.recent-listing-image img { object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.recent-listing-card:hover .recent-listing-image img { transform: scale(1.025); }
+.recent-listing-copy { display: flex; min-height: 300px; flex: 1; flex-direction: column; padding: clamp(22px, 2.4vw, 32px); }
+.recent-listing-summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; margin-bottom: 24px; }
+.recent-listing-summary span { max-width: 8ch; color: var(--accent); font-size: 11px; letter-spacing: .13em; line-height: 1.25; text-transform: uppercase; }
+.recent-listing-summary strong { white-space: nowrap; font-family: var(--serif); font-size: clamp(20px, 1.7vw, 26px); font-variant-numeric: lining-nums tabular-nums; font-weight: 400; letter-spacing: -.02em; line-height: 1; }
+.recent-listing-copy > p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.recent-listing-copy h3 { margin: 18px 0 8px; font-family: var(--serif); font-size: clamp(24px, 2.2vw, 32px); font-weight: 400; letter-spacing: -.03em; line-height: 1.08; }
+.recent-listing-link { width: fit-content; margin-top: auto; padding-top: 34px; padding-bottom: 7px; border-bottom: 1px solid var(--ink); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+
 .contact { display: grid; grid-template-columns: 1fr 1fr; background: var(--ink); color: var(--paper); }
 .agent-card, .lead-panel { padding: clamp(72px, 8vw, 130px) clamp(24px, 7vw, 110px); }
 .agent-card { display: grid; align-content: center; background: color-mix(in srgb, var(--ink) 88%, var(--paper)); }
@@ -177,7 +194,7 @@ img { display: block; max-width: 100%; }
   .hero-copy h1 { font-size: clamp(54px, 14vw, 96px); line-height: .85; }
   .hero-meta { align-items: start; flex-direction: column; gap: 10px; }
   .hero-meta p:last-child { margin-right: 0; text-align: left; }
-  .address-price, .narrative, .neighborhood-intro, .features-intro { grid-template-columns: 1fr; }
+  .address-price, .narrative, .neighborhood-intro, .features-intro, .recent-listings-heading { grid-template-columns: 1fr; }
   .facts-grid { grid-template-columns: 1fr 1fr; }
   .fact:nth-child(n + 3) { border-top: 1px solid var(--line); }
   .fact:nth-child(odd) { padding-left: 0; border-left: 0; }
@@ -191,6 +208,8 @@ img { display: block; max-width: 100%; }
   .feature-image { aspect-ratio: var(--photo-ratio); }
   .neighborhood-grid { grid-template-columns: 1fr; }
   .neighborhood-grid > a { min-height: 280px; }
+  .recent-listings-grid { display: flex; gap: 14px; padding-bottom: 16px; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .recent-listing-card { flex: 0 0 min(76vw, 440px); scroll-snap-align: start; }
   .contact { grid-template-columns: 1fr; }
 }
 
@@ -210,6 +229,8 @@ img { display: block; max-width: 100%; }
   .gallery-all { margin-top: 30px; margin-right: 18px; }
   .features-intro { gap: 6px; }
   .feature-image { aspect-ratio: 3 / 2; }
+  .recent-listing-card { flex-basis: 86vw; }
+  .recent-listing-copy { min-height: 280px; }
   .agents { grid-template-columns: 1fr; }
   .agent-profile { padding-inline: 0; }
   .agent-profile + .agent-profile { margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(241,238,230,.2); border-left: 0; }
