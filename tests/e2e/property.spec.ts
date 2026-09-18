@@ -102,6 +102,17 @@ test("public copy contains no staging or internal QA language", async ({ page })
   ]) {
     expect(publicCopy).not.toContain(internalPhrase);
   }
+  for (const ungroundedPhrase of [
+    "garden rooms",
+    "outdoor rooms",
+    "follow the light",
+    "space opens up",
+    "thoughtfully presented",
+    "time in the garden",
+  ]) {
+    expect(publicCopy).not.toContain(ungroundedPhrase);
+  }
+  await expect(page.locator(".pull-quote")).toHaveCount(0);
   expect(publicCopy).not.toMatch(/[↗↘➜➝➞⟶]/);
 });
 
@@ -132,16 +143,40 @@ test("both listing advisors have centered, distinct profiles", async ({ page }) 
 
   const profiles = page.locator(".agent-profile");
   await expect(profiles).toHaveCount(2);
-  await expect(page.locator(".agent-profile .agent-monogram")).toHaveText(["SS", "AW"]);
+  await expect(page.locator(".agent-profile .agent-monogram")).toHaveCount(0);
+  await expect(page.getByRole("img", { name: "Portrait of Shug Sidhu standing outdoors in a dark suit" })).toBeVisible();
+  await expect(page.getByRole("img", { name: "Portrait of Andre Wang seated in a living room" })).toBeVisible();
 
   const alignment = await profiles.evaluateAll((items) => items.map((item) => {
     const profile = item.getBoundingClientRect();
-    const monogram = item.querySelector(".agent-monogram")?.getBoundingClientRect();
-    if (!monogram) return Number.POSITIVE_INFINITY;
-    return Math.abs((profile.left + profile.width / 2) - (monogram.left + monogram.width / 2));
+    const portrait = item.querySelector(".agent-portrait")?.getBoundingClientRect();
+    if (!portrait) return Number.POSITIVE_INFINITY;
+    return Math.abs((profile.left + profile.width / 2) - (portrait.left + portrait.width / 2));
   }));
 
   expect(alignment.every((offset) => offset <= 1)).toBe(true);
+});
+
+test("team feedback refinements keep the editorial layout balanced", async ({ page }) => {
+  await page.goto("/");
+
+  expect(await page.locator(".site-header .wordmark span").evaluate((element) => getComputedStyle(element).borderRadius)).toBe("0px");
+  expect(await page.locator(".site-header .wordmark span").evaluate((element) => getComputedStyle(element).borderBottomStyle)).toBe("none");
+  const wordmarkSizes = await page.locator(".site-header .wordmark").evaluate((wordmark) => {
+    const number = wordmark.querySelector("span");
+    return [getComputedStyle(wordmark).fontSize, number ? getComputedStyle(number).fontSize : null];
+  });
+  expect(wordmarkSizes[1]).toBe(wordmarkSizes[0]);
+
+  const factSizes = await page.locator(".fact dd").evaluateAll((items) => items.map((item) => Number.parseFloat(getComputedStyle(item).fontSize)));
+  expect(Math.max(...factSizes) - Math.min(...factSizes)).toBeLessThanOrEqual(0.1);
+  if ((page.viewportSize()?.width ?? 0) > 1000) {
+    const factWidths = await page.locator(".fact").evaluateAll((items) => items.slice(0, 2).map((item) => item.getBoundingClientRect().width));
+    expect(factWidths[0]).toBeLessThan(factWidths[1] ?? 0);
+  }
+
+  const headingTops = await page.locator(".neighborhood-grid h3").evaluateAll((items) => items.map((item) => item.getBoundingClientRect().top));
+  if ((page.viewportSize()?.width ?? 0) > 840) expect(Math.max(...headingTops) - Math.min(...headingTops)).toBeLessThanOrEqual(1);
 });
 
 test("a failed inquiry keeps the visitor's entered details", async ({ page }) => {

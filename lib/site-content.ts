@@ -24,6 +24,12 @@ const agentSchema = z.object({
   phone: z.string().min(1),
   email: z.email(),
   initials: z.string().min(1).max(4),
+  headshot: z.object({
+    src: z.string().startsWith("/agents/"),
+    width: z.number().int().positive(),
+    height: z.number().int().positive(),
+    alt: z.string().min(8),
+  }).optional(),
 });
 
 const resourceSchema = z.object({
